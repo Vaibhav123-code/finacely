@@ -8,4 +8,4 @@ function NoTransections() {
   )
 }
 
-export default NoTransections
+export default NoTransections;
