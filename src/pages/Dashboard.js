@@ -11,6 +11,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
 import { getDocs } from 'firebase/firestore';
 import TransectionTable from '../componenet/TransectionTabler';
+import ChartComponent from '../componenet/Charts';
+import NoTransections from '../componenet/NoTransections/NoTransections';
 
 function Dashboard() {
   const [transections, setTransection] = useState([]);
@@ -106,6 +108,9 @@ function Dashboard() {
       setTotalBalance(incomeTotal - expenseTotal)
       console.log(income , expense , totalBalance)
     };
+    let sortedTransections = transections.sort((a,b) =>{
+      return new Date(b.date) - new Date(a.date);
+    })
 
   return (
     <div>
@@ -122,7 +127,8 @@ function Dashboard() {
          showExpenseModal={showExpenseModal}
          showIncomeModal={showIncomeModal}
       />
-
+    
+    { transections.length !=0 ? <ChartComponent  sortedTransections={sortedTransections}/> : <NoTransections />}
      <AddExpenseModal
         isExpenseModalVisible={isExpenseModalVisible}
         handleExpenseCancel={handleExpenseCancel}
