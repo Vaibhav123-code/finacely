@@ -28,3 +28,10 @@
     color:  var(--theme) !important;
     transition: all 0.3s;
 }
+
+@media (max-width: 600px) {
+    .btn {
+        font-size: 0.8rem; /* Adjust font size for smaller screens */
+        padding: 0.6rem 1rem !important; /* Adjusted padding for smaller screens */
+    }
+}

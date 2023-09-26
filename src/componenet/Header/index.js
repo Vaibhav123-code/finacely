@@ -41,10 +41,10 @@ useEffect(()=>{
             <p className="logo">Finacely.</p>
             { user && (
 
-                <div style={{display: "flex", alignItems: "center",gap:"0.75rem"}} > 
+                <div className="nav-item"> 
                     <img 
                     src={user.photoURL ? user.photoURL : profilePic}
-                    style={{ borderRadius: "50%", width: "1.7rem", height: "1.7rem" }}
+                    className="profile-img"
                     />
                  <p className="logo link" onClick={logoutFnc}>Logout</p>
                 </div>

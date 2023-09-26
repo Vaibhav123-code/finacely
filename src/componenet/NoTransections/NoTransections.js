@@ -1,5 +1,5 @@
 import React from 'react';
-import transections from "./transections.png"
+import transections from "../../assets/transections.png"
 
 function NoTransections() {
   return (
@@ -14,7 +14,7 @@ function NoTransections() {
         }}
         >
           <img src={transections} alt="transections" 
-            style={{ width: "400px", margin:"4rem"}}/>
+            style={{ width: "400px", margin:"1rem"}}/>
             <p style={{ textAlign: "center", fontSize: "1.2rem"}}>
               You don't have any transection yet.
             </p>

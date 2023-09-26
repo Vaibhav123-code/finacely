@@ -4,7 +4,7 @@ import Cards from '../componenet/Cards'
 import { Modal } from 'antd';
 import AddExpenseModal from '../componenet/Modals/addExpense';
 import AddIncomeModal from '../componenet/Modals/addIncome';
-import { addDoc, collection, query } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, query } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 import moment from 'moment';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -112,6 +112,34 @@ function Dashboard() {
       return new Date(b.date) - new Date(a.date);
     })
 
+    async function resetTransactions() {
+      console.log("hello")
+      try{
+        const userRef = collection(db, `users/${user.uid}/transections`);
+        const snapshot = await getDocs(userRef);
+        
+        // Array to store promises for deletion
+        const deletionPromises = [];
+    
+        snapshot.forEach((doc) => {
+          const deletionPromise = deleteDoc(doc.ref);
+          deletionPromises.push(deletionPromise);
+        });
+    
+        // Wait for all promises to resolve
+        await Promise.all(deletionPromises);
+    
+        toast.success("All transactions deleted successfully");
+      } catch(e){
+        toast.error("Failed to delete all transactions");
+      }
+    
+      // After deleting all transactions, update the local state or state management
+      setTransection([]);
+      calculateBalance(); // You may also need to update the balance
+    }
+    
+
   return (
     <div>
       <Header />
@@ -126,9 +154,13 @@ function Dashboard() {
          totalBalance={totalBalance}
          showExpenseModal={showExpenseModal}
          showIncomeModal={showIncomeModal}
+         resetTransactions={resetTransactions}
       />
     
-    { transections.length !=0 ? <ChartComponent  sortedTransections={sortedTransections}/> : <NoTransections />}
+    { 
+      transections && transections.length !=0 ? (
+      <ChartComponent  sortedTransections={sortedTransections}/>) : ( <NoTransections /> )
+    }
      <AddExpenseModal
         isExpenseModalVisible={isExpenseModalVisible}
         handleExpenseCancel={handleExpenseCancel}

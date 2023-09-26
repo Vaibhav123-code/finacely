@@ -23,3 +23,8 @@
 .custom-input::placeholder{
     color: grey;
 }
+@media (max-width: 600px) {
+    .custom-input {
+        font-size: 0.8rem; /* Adjust font size for mobile */
+    }
+}

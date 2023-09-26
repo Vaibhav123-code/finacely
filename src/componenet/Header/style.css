@@ -23,3 +23,15 @@
     opacity: 1;
     transition: all 0.3s;
 }
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.profile-img{
+    border-radius: 50%;
+    width:1.7rem ;
+   height: 1.7rem;
+}
+
+

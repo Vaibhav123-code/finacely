@@ -14,6 +14,7 @@ body{
 input{
     font-family: 'Montserrat', sans-serif;
 }
+
 .custom-input {
     border: 0px;
     border-bottom: 1px solid #000;
@@ -28,35 +29,4 @@ input{
     outline: none;
     opacity: 1;
     transition: all 0.3s;
-}
-.input-flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-    box-shadow: var(--shadow);
-    border-radius: 0.5rem;
-    padding: 0rem 0.5rem;
-    
-}
-.input-flex input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 0;
-}
-.input-flex input:focus {
-    outline: none;
-}
-.select-input {
-    width: 30%;
-    margin-right: 10;
-    display: flex;
-    align-items: center;
-    box-shadow: var(--shadow) ;
-    border-radius: 0.5rem !important;
-    padding: 0.2rem 0.5rem;
-}
-.select-input > div {
-   border: 8px solid #fff !important;
 }

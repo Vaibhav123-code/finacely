@@ -107,33 +107,37 @@ function SignupSignin() {
           setLoading(false)
        }
     }
-    async function createDoc(user){
-      // make sure that doc with that uid not exist
-      // create a doc
-      if(!user) return;
-        setLoading(true);
-      const userRef = doc(db,"user", user.uid);
+    
+    async function createDoc(user) {
+      if (!user) return;
+    
+      setLoading(true);
+    
+      const userRef = doc(db, "users", user.uid);
       const userData = await getDoc(userRef);
-      if(!userData.exists()){
-        try{
-          await setDoc(doc(db,"users",user.uid), {
-             name: user.displayName ? user.displayName : name,
-             email: user.email,
-             photoURL: user.photoURL ? user.photoURL : "",
-             createdAt: new Date(),
+    
+      if (!userData.exists()) {
+        try {
+          await setDoc(userRef, {
+            name: user.displayName ? user.displayName : "Default Name",
+            email: user.email,
+            photoURL: user.photoURL ? user.photoURL : "",
+            createdAt: new Date(),
           });
-          toast.success("doc created");
-          setLoading(false)
-        }catch(e){
+          
+          toast.success("Document created successfully");
+          setLoading(false);
+        } catch (e) {
           toast.error(e.message);
-          setLoading(false)
-          console.log("error while createing doc")
-         }
-       }else{
-        toast.error("Doc already exist")
-       }
+          setLoading(false);
+          console.error("Error while creating doc:", e);
+        }
+      } else {
+        toast.error("Document already exists");
+        setLoading(false);
+      }
     }
-
+    
   return (
     <>
     { 

@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import searchImg from '../../assets/searchImg.webp'
 import { parse, unparse } from 'papaparse';
 import { toast } from 'react-toastify';
+import "./style.css"
 
 function TransectionTable({ transections, addTransection, fetchTransections }) {
   const [search,setSearch] = useState("");
@@ -90,21 +91,9 @@ function TransectionTable({ transections, addTransection, fetchTransections }) {
 }
 
   return (
-  <div 
-  style={{
-    width:"95%",
-    padding:"0rem 2rem"
-  }}>
+  <div className='table-container'>
 
-    <div 
-    style={{
-      display:"flex",
-      justifyContent:"space-between",
-      gap:"1rem",
-      alignItems:"center",
-      marginBottom:"1rem"
-    }} 
-    >
+   <div className='table-search'>
       <div className='input-flex' >
         <img src={searchImg} width='20' />
         <input 
@@ -130,51 +119,38 @@ function TransectionTable({ transections, addTransection, fetchTransections }) {
 
    <div className='my-table' >
       
-       <div style={{
-           display: "flex",
-           justifyContent: "space-between",
-           alignItems: "center",
-           width:"100",
-           marginBottom:"1rem"
-         }}
-         >
-          <h2> My Transection </h2>
-         
- 
-  <div>
-     <Radio.Group
-        className='input-radio'
-        onChange={(e) => setSortKey(e.target.value)}
-        value={sortKey}
-        >
-      <Radio.Button value="" >No Sort</Radio.Button>
-      <Radio.Button value="date">Sort by Date</Radio.Button>
-      <Radio.Button value="amount">Sort by Amount</Radio.Button>\
-      </Radio.Group>
-      </div>
-      <div 
-style={{
-   display:"flex",
-   justifyContent: "center",
-   gap:"1rem",
-   width:"400px"
-}}
->
+       <div className='table-header' >
 
-  <Button className='btn' onClick={exportCSV}>
-    Export to CSV
-    </Button>
-    <label for="file-csv" className='btn btn-blue'>
-      Import from CSV
-    </label>
-    <input
-      id='file-csv'
-      type='file'
-      accept='.csv'
-      required
-      onChange={importFromCsv}
-      style={{ display: "none" }}
-      />
+          <h2> My Transection </h2>
+
+      <div>
+        <Radio.Group
+            className='input-radio'
+            onChange={(e) => setSortKey(e.target.value)}
+            value={sortKey}
+            >
+          <Radio.Button value="" >No Sort</Radio.Button>
+          <Radio.Button value="date">Sort by Date</Radio.Button>
+          <Radio.Button value="amount">Sort by Amount</Radio.Button>\
+          </Radio.Group>
+          </div>
+
+      <div className='table-export'>
+
+          <Button className='btn' onClick={exportCSV}>
+            Export to CSV
+            </Button>
+            <label for="file-csv" className='btn btn-blue'>
+              Import from CSV
+            </label>
+            <input
+              id='file-csv'
+              type='file'
+              accept='.csv'
+              required
+              onChange={importFromCsv}
+              style={{ display: "none" }}
+              />
       </div>
      </div>
      

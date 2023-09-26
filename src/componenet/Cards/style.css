@@ -20,3 +20,15 @@
 .my-row  p{
     margin: 0;
 }
+
+@media (max-width: 600px) {
+    .my-card {
+        min-width: auto; /* Remove minimum width for smaller screens */
+        width: 85%;
+    }
+
+    .my-row {
+        flex-direction: column; /* Stack items on top of each other */
+        text-align: center; /* Center text */
+    }
+}

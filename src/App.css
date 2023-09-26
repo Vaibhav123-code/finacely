@@ -1,7 +1,54 @@
-.wrapper{
+
+.charts-wrapper {
+    width: 91%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 90vh;
+    justify-content: space-between;
+    height: auto;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow);
+    margin: 2rem;
+    overflow-x: hidden;
+}
+.chart1 {
+    width: 55%;
+    
+}
+.chart2{
+    width: 43%;
+    position: relative;
+}
+.chart2 h2{
+   text-align: center;
+}
+.chart-btn{
+   position: absolute;
+   right: 1rem;
+}
+@media (max-width: 600px) {
+    /* Your styles for screens with a maximum width of 600 pixels go here */
+    .charts-wrapper {
+        width: 100%; /* Adjusted width for full width on smaller screens */
+        flex-direction: column; /* Stack charts on top of each other for mobile */
+        align-items: center; /* Center the charts */
+        height: auto;
+        padding: 1rem; /* Adjust padding for mobile */
+        border-radius: 0.5rem;
+        box-shadow: var(--shadow);
+        margin: 1rem; /* Adjust margin for mobile */
+        overflow-x: hidden;
+    }
+    
+    .chart1 {
+        width: 100%; /* Make both charts take full width on mobile */
+        margin-bottom: 1.5rem; /* Add some space between charts */
+    }
+    .chart2 {
+        width: 90%; /* Make both charts take full width on mobile */
+        margin-bottom: 1.5rem; /* Add some space between charts */
+    }
+    .chart2 h2{
+        text-align: start;
+     }
+    
 }
