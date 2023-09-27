@@ -1,18 +1,22 @@
 
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .charts-wrapper {
     width: 91%;
     display: flex;
     justify-content: space-between;
     height: auto;
-    padding: 2rem;
+    /* padding: 2rem; */
     border-radius: 0.5rem;
     box-shadow: var(--shadow);
     margin: 2rem;
     overflow-x: hidden;
 }
 .chart1 {
-    width: 55%;
-    
+    width: 55%;  
 }
 .chart2{
     width: 43%;
@@ -36,7 +40,6 @@
         border-radius: 0.5rem;
         box-shadow: var(--shadow);
         margin: 1rem; /* Adjust margin for mobile */
-        overflow-x: hidden;
     }
     
     .chart1 {
